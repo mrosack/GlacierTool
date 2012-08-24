@@ -1,12 +1,14 @@
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading;
 using Amazon;
 using Amazon.Glacier;
 using Amazon.Glacier.Model;
 using Amazon.Glacier.Transfer;
 using Amazon.Runtime;
+using System;
+using System.Collections;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
 
 namespace GlacierTool
 {
@@ -28,7 +30,8 @@ namespace GlacierTool
 				Environment.Exit(1);
 				break;
 			case "upload":
-				Console.Write("Need to hook this up!\n");
+				CheckArgs(args.Length, 8);
+				Upload(args.Skip(1).ToArray());
 				break;
 			case "hints":
 				Console.Write("No hints yet.\n");
@@ -39,15 +42,10 @@ namespace GlacierTool
 				Usage();
 				break;
 			}
-			
-			/* more commands: create vault, delete vault, download archive,
-			 * delete archive */
-			
-			
-			/* ------------ refactor the stuff below this line -------------- */
-			
-			
-			/* parse arguments */
+		}
+		
+		public static void Upload(string[] args)
+		{
 			string id = args[0];
 			string access = args[1];
 			string secret = args[2];
@@ -152,6 +150,21 @@ namespace GlacierTool
 			}
 			
 			return region;
+		}
+		
+		public static void CheckArgs(int actual, int correct)
+		{
+			if (actual != correct)
+			{
+				if (actual < correct)
+					Console.Error.Write("Too few arguments were given for " +
+						"that command.\n");
+				else
+					Console.Error.Write("Too many arguments were given for " +
+						"that command.\n");
+				
+				Usage();
+			}
 		}
 		
 		public static void Usage()
