@@ -1,4 +1,5 @@
-LIBDIRS=-lib:../../sdk/aws-dotnet-sdk/AWS\ SDK\ for\ .NET/bin
+# uncomment and change this if AWSSDK.DLL is not in this directory
+#AWSSDK_DIR=-lib:dir_to_AWSSDK.dll
 
 .PHONY: all clean
 
@@ -9,4 +10,4 @@ clean:
 
 GlacierTool.exe: GlacierTool.cs
 	gmcs -langversion:future -sdk:4 -platform:anycpu -debug+ -optimize+ \
-		$(LIBDIRS) -r:AWSSDK -out:GlacierTool.exe GlacierTool.cs
+		$(AWSSDK_DIR) -r:AWSSDK -out:GlacierTool.exe GlacierTool.cs
