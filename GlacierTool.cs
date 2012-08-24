@@ -274,6 +274,9 @@ namespace GlacierTool
 			/* return to first column */
 			Console.CursorLeft = 0;
 			
+			/* BUG: the hack used below will roll over if either time is over
+			 * 24 hours, which is likely for large archives */
+			
 			/* Mono can't handle custom TimeSpan formatting, so we convert the
 			 * TimeSpans to DateTimes before printing them */
 			Console.Write(String.Format("{0,6:f1}%{1,7:d} MiB{2,9:d} MiB" +
