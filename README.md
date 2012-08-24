@@ -56,9 +56,10 @@ installed, which means that connections to Amazon Web Services over HTTPS tend
 to fail with the cryptic error message, `Error getting response stream (Write:
 The authentication or decryption has failed.)`. The Mono
 [security FAQ](http://www.mono-project.com/FAQ:_Security) has suggestions on
-ways to fix this. The easy way is to simply run `mozroots --import`, which will
-install all of Mozilla's root certificates into Mono's trust store. To do this
-for all users on the machine, instead run `mozroots --import --machine` as root.
+ways to fix this. The easy way is to simply run `mozroots --import --sync`,
+which will install all of Mozilla's root certificates into Mono's trust store.
+To do thisfor all users on the machine, instead run
+`mozroots --import --machine --sync` as root.
 
 Notes
 -----
