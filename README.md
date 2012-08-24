@@ -75,4 +75,4 @@ License
 -------
 This project is distributed under the terms of the
 [simplified BSD license](http://opensource.org/licenses/BSD-2-Clause). See the
-LICENSE file for details.
+`LICENSE` file for details.
