@@ -275,7 +275,11 @@ namespace GlacierTool
 			Console.CursorLeft = 0;
 			
 			/* BUG: the hack used below will roll over if either time is over
-			 * 24 hours, which is likely for large archives */
+			 * 24 hours, which is likely for large archives
+			 * 
+			 * in the future: use __d __:__:__ (right-aligned space-padded
+			 * two-digit days, only displayed if >24 hrs)
+			 */
 			
 			/* Mono can't handle custom TimeSpan formatting, so we convert the
 			 * TimeSpans to DateTimes before printing them */
