@@ -22,10 +22,11 @@ namespace GlacierTool
 				Usage();
 			
 			/* commands */
-			switch (args[0])
+			switch (args[0].ToLower())
 			{
 			case "listvaults":
 			case "inventory":
+			case "download":
 				Console.Error.Write("Command not implemented yet.\n");
 				Environment.Exit(1);
 				break;
@@ -171,24 +172,30 @@ namespace GlacierTool
 		{
 			Console.Error.Write("\nUsage: [mono] GlacierTool.exe " +
 				"<command> <parameters>\n\n" +
-				String.Format("{0,-10}{1}\n", "Command:",
+				String.Format("{0,-12}{1}\n", "Command:",
 					"Parameters & Description:") +
-				String.Format("{0,-10}{1}\n", "listvaults",
+				String.Format("{0,-12}{1}\n", "listvaults",
 					"account_id acc_key sec_key region") +
-				String.Format("{0,-10}{1}\n", "",
+				String.Format("{0,-12}  {1}\n", "",
 					"list the vaults located in <region>") +
-				String.Format("{0,-10}{1}\n", "inventory",
+				String.Format("{0,-12}{1}\n", "inventory",
 					"account_id acc_key sec_key region vault") +
-				String.Format("{0,-10}{1}\n", "",
+				String.Format("{0,-12}  {1}\n", "",
 					"get the latest inventory for <vault>") +
-				String.Format("{0,-10}{1}\n", "upload",
+				String.Format("{0,-12}{1}\n", "upload",
 					"account_id acc_key sec_key region vault path " +
 					"description") +
-				String.Format("{0,-10}{1}\n", "",
+				String.Format("{0,-12}  {1}\n", "",
 					"upload the file located at <path> as an archive to " +
 					"<vault>") +
-				String.Format("{0,-10}{1}\n", "hints", "") +
-				String.Format("{0,-10}{1}\n", "",
+				String.Format("{0,-12}{1}\n", "download",
+					"account_id acc_key sec_key region vault arch_id path") +
+				String.Format("{0,-12}  {1}\n", "",
+					"download the archive specified by <arch_id> from " +
+					"<vault> to the") +
+				String.Format("{0,-12}  {1}\n", "", "file located at <path>") +
+				String.Format("{0,-12}{1}\n", "hints", "") +
+				String.Format("{0,-12}  {1}\n", "",
 					"display some helpful hints about potential problems"));
 			
 			Console.Error.Write("\nAvailable regions are listed below.\n" +
