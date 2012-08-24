@@ -33,7 +33,7 @@ for the reader.
 The [Amazon Web Services SDK for .NET](http://aws.amazon.com/sdkfornet/) is a
 prerequisite for building and running GlacierTool. The most recent version (at
 the time of this writing) is distributed in the project's root directory as
-`AWSSDK.dll`. The Makefile can be easily modified if for some reason this file
+`AWSSDK.dll`. The `Makefile` can be easily modified if for some reason this file
 is located elsewhere.
 
 On Posix systems, first ensure that [Mono](http://www.mono-project.com/) is
@@ -53,12 +53,12 @@ Known Issues
 ------------
 The Mono runtime on Posix systems does not ship with SSL/TLS root certificates
 installed, which means that connections to Amazon Web Services over HTTPS tend
-to fail with the cryptic error message, `the authentication or decryption has
-failed`. The Mono [security FAQ](http://www.mono-project.com/FAQ:_Security) has
-suggestions on ways to fix this. The easy way is to simply run
-`mozroots --import`, which will install all of Mozilla's root certificates into
-Mono's trust store. To do this for all users on the machine, instead run
-`mozroots --import --machine` as root.
+to fail with the cryptic error message, `Error getting response stream (Write:
+The authentication or decryption has failed.)`. The Mono
+[security FAQ](http://www.mono-project.com/FAQ:_Security) has suggestions on
+ways to fix this. The easy way is to simply run `mozroots --import`, which will
+install all of Mozilla's root certificates into Mono's trust store. To do this
+for all users on the machine, instead run `mozroots --import --machine` as root.
 
 Notes
 -----
