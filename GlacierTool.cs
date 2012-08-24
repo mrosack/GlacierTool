@@ -228,7 +228,7 @@ namespace GlacierTool
 		
 		public static void CtrlC(object sender, ConsoleCancelEventArgs e)
 		{
-			Console.Write("\n\nUpload canceled.\n");
+			Console.Write("\n\nOperation canceled.\n");
 			Environment.Exit(1);
 		}
 	}
