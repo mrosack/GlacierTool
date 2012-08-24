@@ -35,7 +35,7 @@ namespace GlacierTool
 				Upload(args.Skip(1).ToArray());
 				break;
 			case "hints":
-				Console.Write("No hints yet.\n");
+				Hints();
 				break;
 			default:
 				Console.Error.Write(String.Format("Can't understand the " +
@@ -221,6 +221,9 @@ namespace GlacierTool
 			/* hint: mono ssl problems need root certs installed
 			 * (use the mozilla thing) */
 			/* hint: where to find acc id, access key, secret key */
+			
+			Console.Error.Write("No hints yet.\n");
+			Environment.Exit(1);
 		}
 		
 		public static void CtrlC(object sender, ConsoleCancelEventArgs e)
