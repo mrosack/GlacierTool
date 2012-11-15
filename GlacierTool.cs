@@ -274,8 +274,21 @@ namespace GlacierTool
 			else
 				eta = new TimeSpan(0);
 			
-			/* return to first column */
-			Console.CursorLeft = 0;
+			try
+			{
+				/* return to first column */
+				Console.CursorTop = Console.BufferHeight - 1;
+				Console.CursorLeft = 0;
+			}
+			catch(ArgumentOutOfRangeException)
+			{
+				/* Terminal resize can cause an ArgumentOutOfRangeException
+				 * because of Mono bug 874 where the dimenisions of
+				 * the console aren't updated until after a write
+				 * https://bugzilla.xamarin.com/show_bug.cgi?id=874 */
+				Console.Write("");
+				return;
+			}
 			
 			/* BUG: the hack used below will roll over if either time is over
 			 * 24 hours, which is likely for large archives
